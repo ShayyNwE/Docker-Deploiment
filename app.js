@@ -16,6 +16,10 @@ app.post('/data', (req, res) => {
   });
 });
 
+app.get('/hello', (req, res) => {
+    res.json({ message: 'Hello world!' });
+  });
+
 app.listen(port, () => {
   console.log(`API running on http://localhost:${port}`);
 });
