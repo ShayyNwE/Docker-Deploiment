@@ -3,7 +3,7 @@ const globals = require('globals')
 module.exports = [
     {
         languageOptions: {
-            ecmaVersions: 2021,
+            ecmaVersion: 2021,
             globals: {
                 ...globals.node,
                 ...globals.jest,
