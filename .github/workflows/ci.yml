@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: CI/CD Pipeline
 
 on:
   push:
@@ -7,8 +7,9 @@ on:
     branches: [main]
 
 jobs:
-  test:
-    name: Tests
+  # Job 1 — Linting du code
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,5 +18,18 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npm test
       - run: npm run lint
+
+  # Job 2 — Tests
+  test:
+    name: Tests
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
