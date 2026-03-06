@@ -18,3 +18,5 @@ EXPOSE 3000
 
 # On dit comment démarrer l'app
 CMD ["npm", "start"]
+
+ENV NODE_ENV=production
